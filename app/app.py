@@ -55,5 +55,7 @@ def index_post():
 
 
 if __name__ == "__main__":  # pragma: no cover
-    app.run(debug=True, port=5000, host="127.0.0.1")
+    debug_mode = os.getenv("FLASK_DEBUG", "False") == "True"
+
+    app.run(debug=debug_mode, port=5000, host="127.0.0.1")
     # Quita debug=True para producción

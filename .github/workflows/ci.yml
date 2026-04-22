@@ -15,6 +15,7 @@ jobs:
 
     env:
       SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      FLASK_DEBUG: ${{ vars.FLASK_DEBUG }}
 
     steps:
       - uses: actions/checkout@v3
