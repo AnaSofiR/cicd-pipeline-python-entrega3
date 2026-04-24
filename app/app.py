@@ -12,9 +12,6 @@ load_dotenv()
 app = Flask(__name__)
 secret_key = os.getenv("SECRET_KEY")
 
-if not secret_key:
-    raise ValueError("SECRET_KEY no configurada")
-
 app.config["SECRET_KEY"] = secret_key  # nosec
 
 csrf = CSRFProtect(app)
