@@ -51,8 +51,14 @@ def index_post():
     return render_template("index.html", resultado=_resultado_from_post())
 
 
+@app.route("/health")
+def health():
+    """Health check del ALB."""
+    return "OK", 200
+
+
 if __name__ == "__main__":  # pragma: no cover
     debug_mode = os.getenv("FLASK_DEBUG", "False") == "True"
-
-    app.run(debug=debug_mode, port=5000, host="127.0.0.1")
-    # Quita debug=True para producción
+    app_port = int(os.environ.get("PORT", 5000))
+    app_host = os.environ.get("FLASK_RUN_HOST", "0.0.0.0")
+    app.run(debug=False, port=app_port, host=app_host)
